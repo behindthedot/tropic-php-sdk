@@ -121,7 +121,6 @@ class Resource extends BaseObject
 			$url .= '?' . http_build_query($getParams);
 		}
 
-		echo "URL: $url\n\n";
 
 		/**
 		 * Start building the Guzzle params
