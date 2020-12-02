@@ -12,6 +12,6 @@ trait Update
 	 */
 	public function update(array $data)
 	{
-		return self::post($this->getSelfLink(), [], $data);
+		return self::put($this->getSelfLink(), [], $data);
 	}
 }

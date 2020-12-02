@@ -75,6 +75,20 @@ class Resource extends BaseObject
 
 
 	/**
+	 * Make a PUT HTTP request
+	 *
+	 * @param string $url The URL to call
+	 * @param array $postValues Parameters to add to the PUT body
+	 * @param array $getValues Parameters to add to the URL
+	 * @return ApiResource The processed response from the API
+	 */
+	public static function put(string $url, array $postValues = [], array $getValues = [])
+	{
+		return self::request('put', $url, $getValues, $postValues);
+	}
+
+
+	/**
 	 * Make an HTTP request
 	 *
 	 * @param string $method The HTTP method to use
