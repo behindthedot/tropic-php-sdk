@@ -96,7 +96,7 @@ class Resource extends BaseObject
 	 * @param array $getParams Parameters to add to the URL
 	 * @param array $postParams Parameters to use in a POST body
 	 * @return ApiResource The processed response from the API
-	 * @throws \Tropic\Pay\Exception
+	 * @throws \Tropic\Api\Exception
 	 */
 	public static function request($method, $url, array $getParams = [], array $postParams = [])
 	{
