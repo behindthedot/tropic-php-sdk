@@ -6,6 +6,10 @@ use \GuzzleHttp\Client as HttpClient;
 
 class Resource extends BaseObject
 {
+
+	public static $masterNamespace = null;
+
+
 	/**
 	 * Retrieve all of this object
 	 *
@@ -162,13 +166,17 @@ class Resource extends BaseObject
 			/**
 			 * Decode the JSON response payload
 			 */
-			$data = json_decode((string) $response->getBody());
+			$data = json_decode((string) $response->getBody(), true);
 
-	
+
+			$objectTree = self::buildObjectTreeFromResponse($data);
+
+			return $objectTree;
+
 			/**
 			 * Run our response builder and return the data
 			 */
-			return self::buildObjectFromResponse($data);
+			return self::buildObjectTreeFromResponse($data);
 		}
 		catch ( \GuzzleHttp\Exception\ClientException $e )
 		{
@@ -201,27 +209,50 @@ class Resource extends BaseObject
 
 
 	/**
-	 * Convert response into an Object
+	 * Convert response from API into an object tree
 	 *
-	 * @param array $response The JSON object API response
+	 * @param array $response The response data from the API
 	 * @return object
 	 */
-	public static function buildObjectFromResponse($response)
-	{
-		$className = get_called_class();
+    public static function buildObjectTreeFromResponse($response)
+    {
+    	if ( is_array($response) )
+    	{
+    		$className = '\TropicSkincare\Api\BaseObject';
 
-		/**
-		 * Check if this response is a collection
-		 */
-		if ( property_exists($response, 'data') && property_exists($response, 'meta') )
-		{
-			return new Collection($response, $className);
-		}
-		else
-		{
-			return new $className($response);
-		}
-	}
+    		if ( isset($response['object']) )
+    		{
+    			$className = self::convertObjectNameToClassName($response['object']);		
+    		}
+
+    		foreach ( $response as $n => $v )
+    		{
+    			/**
+    			 * For each element, recursively convert to objects
+    			 */
+    			$response[$n] = self::buildObjectTreeFromResponse($v);
+    		}
+
+    		if ( isset($response[0]) )
+    		{
+    			/**
+    			 * The array was a numeric array, so we don't want to force it into an object
+    			 */
+    			return $response;
+    		}
+    		else
+    		{
+    			return new $className($response);
+    		}
+    	}
+    	else
+    	{
+    		/**
+    		 * This is a single value, return as is
+    		 */
+    		return $response;
+    	}
+    }
 
 
 	/**
@@ -232,7 +263,7 @@ class Resource extends BaseObject
 	 * @param string $name
 	 * @return string
 	 */
-	private static function convertObjectNameToClassName(string $name) : string
+	public static function convertObjectNameToClassName(string $name) : string
 	{
 		$words = explode('_', $name);
 		$className = '';
@@ -258,7 +289,6 @@ class Resource extends BaseObject
 			$namespace[0] . '\\' . $namespace[1],
 			$namespace[0] . '\\Api'
 		];	
-
 
 		foreach ( $tries as $tryNamespace )
 		{
@@ -315,7 +345,7 @@ class Resource extends BaseObject
 	 */
 	public function getLink($name)
 	{
-		return self::request('get', $this->links[$name]);
+		return self::request('get', $this->links->$name);
 	}
 
 

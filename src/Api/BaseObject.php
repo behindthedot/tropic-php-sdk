@@ -17,8 +17,33 @@ class BaseObject
 	 *
 	 * @param object $data The properties for the object
 	 */
-	public function __construct(object $data)
+	public function __construct($data)
 	{
+		/*
+		foreach ( $data as $name => $element )
+		{
+			if ( ! is_object($element) )
+			{
+				continue;
+			}
+
+			echo "Sending the following to buildObjectFromResponse:<br/>";
+
+			echo '<pre style="color: red">';
+			print_r($element);
+			echo '</pre>';
+
+			$out = Resource::buildObjectFromResponse($element);
+
+			echo "Received the following back from buildObjectFromResponse:<br/>";
+
+			echo '<pre style="color: green">';
+			print_r($out);
+			echo '</pre>';
+
+			$data->{$name} = Resource::buildObjectFromResponse($element);
+		}*/
+
 		$this->transient = $data;
 	}
 
@@ -31,7 +56,7 @@ class BaseObject
 	 */
 	public function __set($name, $value)
 	{
-		$this->transient->$name = $value;
+		$this->transient[$name] = $value;
 	}
 
 
@@ -42,7 +67,7 @@ class BaseObject
 	 */
 	public function __get($name)
 	{
-		return $this->transient->$name;
+		return $this->transient[$name];
 	}
 
 
@@ -53,6 +78,6 @@ class BaseObject
 	 */
 	public function __isset($name)
 	{
-		return isset($this->transient->$name);
+		return isset($this->transient[$name]);
 	}
 }
