@@ -19,4 +19,15 @@ class Customer extends \TropicSkincare\Api\Resource
 	 * @var const
 	 */
 	const ENDPOINT = '/customers';
+
+
+	/**
+	 * Get the customer's full name
+	 *
+	 * @return string
+	 */
+	public function fullName()
+	{
+		return trim($this->firstname . ' ' . $this->lastname);
+	}
 }

@@ -19,4 +19,15 @@ class Ambassador extends \TropicSkincare\Api\Resource
 	 * @var const
 	 */
 	const ENDPOINT = '/ambassadors';
+
+
+	/**
+	 * Get the ambassador's full name
+	 *
+	 * @return string
+	 */
+	public function fullName()
+	{
+		return trim($this->firstname . ' ' . $this->lastname);
+	}
 }
