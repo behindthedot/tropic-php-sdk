@@ -22,7 +22,7 @@ class Service
 	private static $serviceUrls = [
 		'id' => 'http://id.tropicskincare.local',
 		'pay' => 'http://api.pay.tropicskincare.local',
-		'stem' => 'http://stemapi-dev.eu-west-2.elasticbeanstalk.com',
+		'stem' => 'https://stem-api.tropic.software',
 		'websites' => 'http://api.websites.tropicskincare.local'
 	];
 
