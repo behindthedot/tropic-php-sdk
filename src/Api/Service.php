@@ -20,10 +20,10 @@ class Service
 	 * @var array
 	 */
 	private static $serviceUrls = [
-		'id' => 'http://id.tropicskincare.local',
-		'pay' => 'http://api.pay.tropicskincare.local',
-		'stem' => 'https://stem-api.tropic.software',
-		'websites' => 'http://api.websites.tropicskincare.local'
+		'id' => 'https://id.tropic.software',
+		'pay' => 'https://api.pay.tropic.software',
+		'stem' => 'https://api.stem.tropic.software',
+		'websites' => 'https://api.websites.tropic.software'
 	];
 
 
