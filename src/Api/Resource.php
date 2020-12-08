@@ -343,9 +343,9 @@ class Resource extends BaseObject
 	 * @param string $name The name of the link to request
 	 * @return ApiResource The processed response from the API
 	 */
-	public function getLink($name)
+	public function getLink($name, array $options = [])
 	{
-		return self::request('get', $this->links->$name);
+		return self::request('get', $this->links->$name, $options);
 	}
 
 

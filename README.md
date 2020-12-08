@@ -4,7 +4,6 @@
 
 This composer package allows you to communicate with the Tropic web services.
 
-At present, only *Tropic Pay* and *Tropic ID* are supported.
 
 
 ## Installation
@@ -14,13 +13,13 @@ In order to install this package via composer, you need to first add the private
 	"repositories" : [
     	{
     		"type": "vcs",
-    		"url" : "https://github.com/TropicSkincare/php-sdk.git"
+    		"url" : "https://github.com/behindthedot/tropic-php-sdk.git"
     	}
     ]
 
 You can then install this package in the usual way:
 
-	composer require tropicskincare/sdk
+	composer require behindthedot/tropic-php-sdk
 
 
 ## User Authentication Using Tropic ID (Id)
