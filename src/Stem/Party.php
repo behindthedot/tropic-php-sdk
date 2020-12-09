@@ -27,7 +27,7 @@ class Party extends \TropicSkincare\Api\Resource
 	 * @param string $slug The URL slug
 	 * @return Party
 	 */
-	public function findBySlug(string $slug, array $options = [])
+	public static function findBySlug(string $slug, array $options = [])
 	{
 		return $this->get(self::ENDPOINT . '/slug/' . $slug, $options);
 	}
