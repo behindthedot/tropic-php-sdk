@@ -19,4 +19,16 @@ class Party extends \TropicSkincare\Api\Resource
 	 * @var const
 	 */
 	const ENDPOINT = '/parties';
+
+
+	/**
+	 * Retrieve a party using it's 'slug'
+	 *
+	 * @param string $slug The URL slug
+	 * @return Party
+	 */
+	public function findBySlug(string $slug, array $options = [])
+	{
+		return $this->get(self::ENDPOINT . '/slug/' . $slug, $options);
+	}
 }
