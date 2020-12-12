@@ -3,7 +3,7 @@
 namespace TropicSkincare\Stem;
 
 
-class Payment extends \TropicSkincare\Api\Resource
+class Transaction extends \TropicSkincare\Api\Resource
 {
 	/**
 	 * List operations that can be performed on this resource
@@ -18,5 +18,5 @@ class Payment extends \TropicSkincare\Api\Resource
 	 *
 	 * @var const
 	 */
-	const ENDPOINT = '/payments';
+	const ENDPOINT = '/transactions';
 }
