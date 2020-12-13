@@ -59,7 +59,7 @@ class Service
 	{
 		if ( null === $url )
 		{
-			continue;
+			return;
 		}
 
 		self::verifyServiceName($serviceName);
