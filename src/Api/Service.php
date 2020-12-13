@@ -57,6 +57,11 @@ class Service
 	 */
 	public static function setServiceUrl(string $serviceName, string $url)
 	{
+		if ( null === $url )
+		{
+			continue;
+		}
+
 		self::verifyServiceName($serviceName);
 
 		self::$serviceUrls[$serviceName] = $url;
