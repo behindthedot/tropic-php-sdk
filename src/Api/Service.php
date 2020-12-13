@@ -55,7 +55,7 @@ class Service
 	 * @param string $serviceName The name of the web service
 	 * @param string $url The URL
 	 */
-	public static function setServiceUrl(string $serviceName, string $url)
+	public static function setServiceUrl(string $serviceName, $url)
 	{
 		if ( null === $url )
 		{
