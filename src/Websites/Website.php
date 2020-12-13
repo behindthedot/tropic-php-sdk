@@ -19,4 +19,16 @@ class Website extends \TropicSkincare\Api\Resource
 	 * @var const
 	 */
 	const ENDPOINT = '/websites';
+
+
+	/**
+	 * Retrieve a website using it's 'slug'
+	 *
+	 * @param string $slug The URL slug
+	 * @return Website
+	 */
+	public static function findBySlug(string $slug, array $options = [])
+	{
+		return self::get(self::ENDPOINT . '/slug/' . $slug, $options);
+	}
 }
