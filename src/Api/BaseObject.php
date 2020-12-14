@@ -80,4 +80,13 @@ class BaseObject
 	{
 		return isset($this->transient[$name]);
 	}
+
+
+	/**
+	 * To String
+	 */
+	public function __toString()
+	{
+		return json_encode($this->transient);
+	}
 }
