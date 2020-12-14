@@ -31,4 +31,13 @@ class Party extends \TropicSkincare\Api\Resource
 	{
 		return self::get(self::ENDPOINT . '/slug/' . $slug, $options);
 	}
+
+
+	/**
+	 * Reset the password for the host portal
+	 */
+	public function resetHostPortalPassword(array $options = [])
+	{
+		return self::post(self::ENDPOINT . '/' . $this->id . '/reset-password', $options);
+	}
 }
