@@ -19,31 +19,6 @@ class BaseObject
 	 */
 	public function __construct($data)
 	{
-		/*
-		foreach ( $data as $name => $element )
-		{
-			if ( ! is_object($element) )
-			{
-				continue;
-			}
-
-			echo "Sending the following to buildObjectFromResponse:<br/>";
-
-			echo '<pre style="color: red">';
-			print_r($element);
-			echo '</pre>';
-
-			$out = Resource::buildObjectFromResponse($element);
-
-			echo "Received the following back from buildObjectFromResponse:<br/>";
-
-			echo '<pre style="color: green">';
-			print_r($out);
-			echo '</pre>';
-
-			$data->{$name} = Resource::buildObjectFromResponse($element);
-		}*/
-
 		$this->transient = $data;
 	}
 
@@ -84,6 +59,8 @@ class BaseObject
 
 	/**
 	 * To String
+	 *
+	 * @return string The json respresentation of this object
 	 */
 	public function __toString()
 	{

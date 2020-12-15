@@ -33,4 +33,19 @@ class Collection
 		$this->meta = isset($data['meta']) ? $data['meta'] : [];
 		$this->links = isset($data['links']) ? $data['links'] : [];
 	}
+
+
+	/**
+	 * To String
+	 *
+	 * @return string The json respresentation of this object
+	 */
+	public function __toString()
+	{
+		return json_encode([
+			'items' => $this->items,
+			'meta' => $this->meta,
+			'links' => $this->links
+		]);
+	}
 }
