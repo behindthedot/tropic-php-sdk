@@ -66,4 +66,15 @@ class BaseObject
 	{
 		return json_encode($this->transient);
 	}
+
+
+	/*
+	 * To array
+	 *
+	 * @return array
+	 */
+	public function asArray()
+	{
+		return $this->transient;
+	}
 }
