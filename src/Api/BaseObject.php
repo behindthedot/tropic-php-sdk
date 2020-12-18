@@ -9,7 +9,7 @@ class BaseObject
 	 *
 	 * @var array
 	 */
-	public $transient = [];
+	private $transient = [];
 
 
 	/**
